@@ -1,6 +1,6 @@
 # Uibase
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
+基于Angular7前端项目，用到了NG-ZORRO UI组件
+后端逻辑请参照 https://github.com/kkalpha/base
 
 ## Development server
 
