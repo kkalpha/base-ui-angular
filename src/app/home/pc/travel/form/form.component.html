@@ -1,0 +1,45 @@
+<form nz-form [formGroup]="formGroup">
+  <nz-form-item>
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="fromDate" nzRequired>{{'fromDate' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <nz-date-picker [nzAllowClear]="false" [nzFormat]="'yyyy-MM-dd'" formControlName="fromDate">
+      </nz-date-picker>
+      <nz-form-explain *ngIf="formGroup.get('fromDate').dirty && formGroup.get('fromDate').errors">{{'ErrorfromDate'
+        | translate}}</nz-form-explain>
+    </nz-form-control>
+
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="toDate" nzRequired>{{'toDate' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <nz-date-picker [nzAllowClear]="false" [nzFormat]="'yyyy-MM-dd'" formControlName="toDate">
+      </nz-date-picker>
+      <nz-form-explain *ngIf="formGroup.get('toDate').dirty && formGroup.get('toDate').errors">{{'ErrortoDate'
+        | translate}}</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="totalAmount" nzRequired>{{'totalAmount' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <input nz-input formControlName="totalAmount" id="totalAmount" type="number">
+      <nz-form-explain *ngIf="formGroup.get('totalAmount').dirty && formGroup.get('totalAmount').errors">
+        <ng-container *ngIf="formGroup.get('totalAmount').errors.required">
+          {{'ErrorAmmount' | translate}}
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('totalAmount').errors.max">
+          Exceeded the maximum!
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('totalAmount').errors.pattern">
+          please input number!
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzRequired>{{'remark' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="16" [nzMd]="18" [nzXs]="24">
+      <textarea nz-input formControlName="remark" nzAutosize></textarea>
+    </nz-form-control>
+    <nz-form-explain *ngIf="formGroup.get('remark').dirty && formGroup.get('remark').errors">{{'ErrorRemark'
+      | translate}}</nz-form-explain>
+  </nz-form-item>
+</form>

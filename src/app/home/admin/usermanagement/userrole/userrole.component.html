@@ -1,0 +1,55 @@
+<nz-table #nzTable [nzSize]="'small'" [nzData]="userinfo" [nzShowPagination]="false">
+    <thead nz-thead>
+        <tr>
+            <th nz-th>
+                <span>login Id</span>
+            </th>
+            <th nz-th>
+                <span>Display name</span>
+            </th>
+            <th nz-th>
+                <span>Email</span>
+            </th>
+            <th nz-th>
+                <span>Type</span>
+            </th>
+            <th nz-th>
+                <span>Status</span>
+            </th>
+            <th nz-th>
+                <span>Remarks</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>{{data.loginId}}</td>
+            <td nz-td>{{data.userName}}</td>
+            <td nz-td>{{data.email}}</td>
+            <td nz-td>{{data.type}}</td>
+            <td nz-td>{{data.userStatus}}</td>
+            <td nz-td>{{data.remarks}}</td>
+        </tr>
+    </tbody>
+</nz-table>
+<h3>Assign roles to the above user</h3>
+
+<div nz-row *ngIf="action_result.showmsg">
+    <div nz-col>
+        <nz-alert [nzType]="action_result.msgType" [nzMessage]="action_result.msg" nzShowIcon>
+        </nz-alert>
+    </div>
+</div>
+<!-- <div style="width:400px;background:#ccc"> -->
+<nz-transfer [nzDataSource]="list" [nzTitles]="['Existing roles', 'To be assigned']" (nzSelectChange)="select($event)" (nzChange)="change($event)">
+
+</nz-transfer>
+<!-- </div> -->
+
+<div nz-form-item nz-row style=" margin-top:30px;">
+    <div nz-form-control nz-col [nzSpan]="24">
+        <button nz-button (click)="prev()" nzSize="large">Previous</button>
+        <button style=" margin-left:10px;" nz-button (click)="save()" [nzType]="'primary'" nzSize="large">Save</button>
+        <button style=" margin-left:10px;" nz-button (click)="next()" nzSize="large">Back to user list</button>
+    </div>
+</div>

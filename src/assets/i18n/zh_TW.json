@@ -1,0 +1,26 @@
+
+{
+"HomeTitle":"測試",
+"RememberMe":"記住我",
+"Login":"登錄",
+"Logout":"登出",
+"MenuHome":"主頁",
+"MenuDataOpr":"數據操作",
+"MenuDataCreate":"創建",
+"MenuDataRetrieve":"查詢",
+"MenuDataUpdate":"更新",
+"MenuWorkflow": "工作流示例",
+"MenuWorkflowRequest":"申请",
+"MenuWorkflowAction":"待办事项",
+"MenuReport": "报表",
+"MenuReportDashboard": "仪表盘",
+"MenuReportBar":"柱状图",
+"MenuReportPie":"饼图",
+"MenuProcess":"工作流配置",
+"MenuProcessMeta":"元数据管理",
+"MenuProcessManagement":"流程实例管理",
+"MenuSystem":"系统管理",
+"MenuSysRole":"角色管理",
+"MenuSysUser":"用户管理",
+"MenuSysConfig":"配置管理"
+}

@@ -1,0 +1,10 @@
+<nz-tabset>
+
+    <nz-tab [nzTitle]="'New Request'" (nzSelect)="initNewRequset()">
+      <app-wf-new></app-wf-new>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="'Request History'" (nzSelect)="initHistory()">
+        <app-wf-history></app-wf-history>
+    </nz-tab>
+</nz-tabset>

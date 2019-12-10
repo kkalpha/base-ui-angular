@@ -1,0 +1,31 @@
+
+    <div nz-row class="button-row">
+      <div nz-col [nzXl]="4" [nzMd]="4" [nzXs]="4" >
+          <button nz-button [nzType]="'primary'" (click)="getFileList()"  >
+              {{'list'| translate}}</button>
+          
+      </div>
+    </div>
+
+    <nz-table #nzTable [nzData]="tableData" [nzFrontPagination]="false" [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"
+    (nzPageIndexChange)="refreshTable($event,'index')" (nzPageSizeChange)="refreshTable($event,'size')" [nzShowSizeChanger]="true"
+    [nzPageSizeOptions]="[5,10,20,50]" [nzLoading]="loading" >
+    <thead>
+        <tr>
+            <th><span>{{'FileName' | translate}}</span></th>
+            <th><span>{{'createTime' | translate}}</span></th>
+            <th><span>{{'Download' | translate}}</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of nzTable.data">
+            <td><span>{{data.name}}</span></td>
+            <td><span>{{data.createTime}}</span></td>
+            <td>
+                <a href="javascript:void(0);" (click)="downloadFile(data.id)" class="cell-margin-left row-margin-top">
+                    {{'download' | translate}}
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

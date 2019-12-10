@@ -1,0 +1,59 @@
+
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+<div nz-row class="row-border">
+
+    <div nz-col [nzSm]="24" [nzXs]="24" class="status-radio">
+        <nz-radio-group [(ngModel)]="transportationSelected" (ngModelChange)="filterTable()" [nzButtonStyle]="'solid'">
+            <label nz-radio-button *ngFor="let transportation of transportationArray" [nzValue]="transportation">{{transportation | translate}}</label>
+        </nz-radio-group>
+    </div>
+</div>
+
+<!-- <app-list-table  [tableInfo]="tableInfo" (pageChange)="refreshTable($event)"></app-list-table> -->
+
+<nz-table #nzTable [nzFrontPagination]="false"  [nzData]="tableInfo.data" [nzTotal]="tableInfo.total" 
+    [nzPageSize]="tableInfo.pageSize"[nzPageIndex]="tableInfo.pageIndex" [nzPageSizeOptions]="[5,10,20,50]" 
+    [nzLoading]="tableInfo.loading"  [nzShowSizeChanger]="tableInfo.showSizeChanger"
+    (nzPageIndexChange)="indexTable($event)" (nzPageSizeChange)="changeTableSize($event)">
+    <thead nz-thead>
+        <tr>
+            <th nz-th>
+                <span>Employee Id</span>
+            </th>
+            <th nz-th>
+                <span>Departure Date</span>
+            </th>
+            <th nz-th>
+                <span>Return Date</span>
+            </th>
+            <th nz-th>
+                <span>Transportation</span>
+            </th>
+            <th nz-th>
+                <span>Trip Reason</span>
+            </th>
+            <th nz-th>
+                <span>Create Time</span>
+            </th>
+            <th nz-th>
+                <span>Action</span>
+            </th>
+
+        </tr>
+    </thead>
+    <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>{{data.empId}}</td>
+            <td nz-td>{{formateDate(data.departureDate)}}</td>
+            <td nz-td>{{formateDate(data.returnDate)}}</td>
+            <td nz-td>{{data.transportation}}</td>
+            <td nz-td>{{data.tripReason}}</td>
+            <td nz-td>{{data.createTime}}</td>
+            <td>
+                <a href="javascript:void(0);" (click)="updateData(data)" class="cell-margin-left row-margin-top">
+                    {{'Update' | translate}}
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

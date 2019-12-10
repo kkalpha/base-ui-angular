@@ -1,0 +1,18 @@
+@import '../../../../../app.custom.less';
+.header-username {
+    padding-right: 5px;
+    font-size: 16px;
+}
+.header-icon {
+    font-size: 16px !important;
+}
+@media (max-width: @screen-sm) {
+    .header-username {
+        display: none;
+    }
+    .header-user-collapsed {
+        .header-username {
+            display: inline;
+        }
+    }
+}

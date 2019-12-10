@@ -1,0 +1,11 @@
+<nz-tabset>
+
+  <nz-tab [nzTitle]="'Task List'" (nzSelect)="initTasks()">
+    <app-wf-task-group></app-wf-task-group>
+    <!-- <app-wf-tasks></app-wf-tasks> -->
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Approval History'" (nzSelect)="initHistory()">
+      <app-wf-process-history></app-wf-process-history>
+  </nz-tab>
+</nz-tabset>

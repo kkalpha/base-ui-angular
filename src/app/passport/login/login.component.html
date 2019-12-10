@@ -1,0 +1,36 @@
+<form nz-form [formGroup]="form" >
+    <app-alert [alertParams]="handlerService.pageParams"></app-alert>
+    <nz-form-item>
+        <nz-form-control>
+            <nz-input-group [nzAddOnBefore]="addOnBeforeUserTemplate" [nzAddOnAfter]="addOnAfterTemplate">
+                <input type="text" nz-input formControlName="userName" placeholder="Email">
+            </nz-input-group>
+            <ng-template #addOnBeforeUserTemplate>
+                <i class="anticon anticon-user"></i>
+            </ng-template>
+            <ng-template #addOnAfterTemplate>@1.com</ng-template>
+            <nz-form-explain *ngIf="form.get('userName').dirty && form.get('userName').errors">{{'ErrorEmail' | translate}}</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <nz-input-group [nzAddOnBefore]="addOnBeforePwdTemplate">
+                <input type="text" nz-input formControlName="password" placeholder="Password" type="password">
+            </nz-input-group>
+            <ng-template #addOnBeforePwdTemplate>
+                <i class="anticon anticon-lock"></i>
+            </ng-template>
+            <nz-form-explain *ngIf="form.get('password').dirty && form.get('password').errors">{{'ErrorPwd' | translate}}</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control>
+            <label nz-checkbox formControlName="remember">
+              <span>{{'RememberMe' | translate}}</span>
+            </label>
+            <button nz-button class="ant-btn__block view-pc view-pad" (click)="login()" [nzType]="'primary'" [nzLoading]="isProcessing">{{'Login' | translate}}</button>
+            <button nz-button class="ant-btn__block view-mobile" (click)="login(true)" [nzType]="'primary'" [nzLoading]="isProcessing">{{'Login' | translate}}</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

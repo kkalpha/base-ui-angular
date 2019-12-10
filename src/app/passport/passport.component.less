@@ -1,0 +1,73 @@
+@import '../../app.custom.less';
+
+:host {
+	::ng-deep {
+
+		.container {
+			background-image: url("../../assets/img/login.svg");
+			background-color: @primary-color;
+			width: 100%;
+			min-height: 100%;
+			background-repeat: no-repeat;
+			background-position: center 75px;
+			padding: 85px 0 130px;
+			position: relative;
+		}
+
+		.login-content {
+
+			.top {
+				text-align: center;
+				max-width: 410px;
+				margin: auto;
+				margin-bottom: 30px;
+	
+				.head {
+					height: 44px;
+					line-height: 44px;
+					a {
+						text-decoration: none;
+					}
+	
+					.logo {
+						height: 44px;
+						vertical-align: top;
+						margin-right: 16px;
+					}
+			
+					.title {
+						font-size: 26px;
+						color: @heading-color-dark;
+						font-family: "Myriad Pro", "Helvetica Neue", Arial, Helvetica, sans-serif;
+						font-weight: 600;
+						position: relative;
+						top: 2px;
+					}
+				}
+			}
+			.login-body {
+				padding: 40px 10px 10px 10px;
+				max-width: 410px;
+				background-color: @background-color-base;
+				margin: auto;
+				box-shadow: @shadow-1-down;
+				
+				.ant-btn-primary {
+					width: 100%;
+				}
+			}
+		}
+
+		.footer {
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+		}
+
+		@media (max-width: @screen-sm) {
+			.container {
+				background-position: left top;
+			}
+		}
+	}
+}

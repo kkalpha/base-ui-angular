@@ -1,0 +1,31 @@
+<div class="app-header" [class.header-side-collapsed]="setting.layout.sideCollapsed">
+    <div class="app-logo-wrapper">
+        <div class="app-logo app-top-nav">
+            <div class="app-logo-image"><img src="./assets/img/logo.png"></div>
+            <div class="app-top-nav-item app-top-nav-item-pc" (click)="toggleCollapsedSideabar()">
+                <i class="anticon trigger anticon-menu-{{setting.layout.sideCollapsed ? 'unfold' : 'fold'}}"></i>
+            </div>
+            <div class="app-top-nav-item app-top-nav-item-m" (click)="toggleCollapsedHeaderMenu()">
+                <i class="anticon trigger anticon-{{setting.layout.headerCollapsed ? 'down' : 'up'}}-circle-o"></i>
+            </div> 
+        </div>
+    </div>
+
+    <div class="app-top-nav-wrap">
+        <ul class="app-top-nav">
+            <li>
+                <a class="view-pc">
+                    <span class="app-top-nav-title">{{'HomeTitle' | translate}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="app-top-nav">
+            <li>
+                <div class="app-top-nav-item app-top-nav-item-all">
+                    <header-user></header-user>
+                </div>
+                <header-language></header-language>
+            </li>
+        </ul>
+    </div>
+</div>

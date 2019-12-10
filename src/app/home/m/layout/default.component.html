@@ -1,0 +1,25 @@
+<div>
+    <Navbar class="my-navbar" [icon]="icon" [rightContent]="rightContent" (onLeftClick)="onOpenChange()">
+        E-travel System
+    </Navbar>
+    <Drawer class="my-drawer"  position = "top" [ngStyle]="{minHeight: this.height+'px'}"
+        [enableDragHandle]="true" [sidebar]="sidebar" [open]="this.state.open" (onOpenChange)="onOpenChange()">
+        <div class="app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </Drawer>
+</div>
+
+<ng-template #icon>
+    <i class="anticon anticon-bars"></i>
+</ng-template>
+
+<ng-template #sidebar>
+    <app-sidebar [device]="'/m'" (menuDataReadyEvent)="onMenuDataReadyEvent($event)"
+    (itemClickEvent)="onItemClickEvent($event)"></app-sidebar>
+</ng-template>
+
+<ng-template #rightContent>
+    <header-user></header-user>
+    <header-language></header-language>
+</ng-template>

@@ -1,0 +1,19 @@
+@import '../../../../../app.custom.less';
+
+.header-menu {
+    display: none;
+}
+.header-menu-link:focus{
+    background-color: #6bb7ee;
+}
+
+@media (max-width: @screen-lg) {
+    .header-menu {
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: block;
+    }
+    .header-menu-collapsed{
+        display: none;
+    }
+}

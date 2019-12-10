@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+@import './ng-zorro-theme.less';
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+ul, ol {
+    list-style: none;
+}
+input[disabled], input:disabled {
+    cursor: not-allowed;
+    background-color: #f7f7f7;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.row-margin-top {
+    margin-top: 10px !important;
+}
+.row-margin-bottom {
+    margin-bottom: 10px !important;
+}
+.cell-margin-left {
+    margin-left: 5px !important;
+}
+.cell-margin-right {
+    margin-right: 5px !important;
+}
+.cell-margin-bottom {
+    margin-bottom: 5px !important;
+}
+.button-row {
+    padding: 10px 0;
+}
+.alert-text {
+    color: @primary-color;
+}
+.error-text {
+    color: @error-color;
+}
+.ant-form-item {
+    margin-bottom: 0;
+}
+.action-button {
+    font-size: 18px;
+}
+.view-pad, .view-mobile {
+    display: none !important;
+}
+.view-pc {
+    display: block !important;
+}
+
+.ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td,
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+    padding: 10px;
+}
+.ant-radio-disabled .ant-radio-inner:after {
+    background-color: rgba(0, 0, 0, 0.65);  
+}
+.ant-radio-disabled + span, .ant-select-disabled, .ant-checkbox-disabled + span {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+@media (max-width: @screen-sm) {
+    // .ant-menu-submenu-popup {
+    //     display: none;
+    // }
+    .ant-menu-submenu-placement-rightTop {
+        display: none;
+    }
+    .ant-modal-body {
+        padding: 12px;
+    }
+    .view-pc {
+        display: none !important;
+    }
+    .view-mobile {
+        display: block !important;
+    }
+}
+
+@media (min-width: @screen-sm) and (max-width: @screen-lg) {
+    .view-pc {
+        display: none !important;
+    }
+    .view-pad {
+        display: block !important;
+    }
+}

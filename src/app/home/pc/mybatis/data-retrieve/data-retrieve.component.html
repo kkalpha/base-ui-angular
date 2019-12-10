@@ -1,0 +1,12 @@
+
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+<div nz-row class="row-border">
+
+    <div nz-col [nzSm]="24" [nzXs]="24" class="status-radio">
+        <nz-radio-group [(ngModel)]="transportationSelected" (ngModelChange)="filterTable()" [nzButtonStyle]="'solid'">
+            <label nz-radio-button *ngFor="let transportation of transportationArray" [nzValue]="transportation">{{transportation | translate}}</label>
+        </nz-radio-group>
+    </div>
+</div>
+
+<app-list-table  [tableInfo]="tableInfo" (pageChange)="refreshTable($event)"></app-list-table>

@@ -1,0 +1,24 @@
+
+<nz-tabset [nzSelectedIndex]="currentTab">
+  <nz-tab [nzTitle]="'Normal Users'">
+    <div style="padding:0px 100px;">
+      <nz-steps [(nzCurrent)]="stepItem.currentStep" [nzSize]="'small'">
+        <nz-step [nzTitle]="'User List'"></nz-step>
+        <nz-step [nzTitle]="'User Edit/Creation'"></nz-step>
+        <nz-step [nzTitle]="'Role Assignment'"></nz-step>
+      </nz-steps>
+    </div>
+    <div class="steps-content">
+
+      <app-userlist *ngIf="stepItem.currentStep == 0"></app-userlist>
+      <app-userprofile *ngIf="stepItem.currentStep == 1"></app-userprofile>
+      <app-userrole *ngIf="stepItem.currentStep == 2"></app-userrole>
+
+    </div>
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Locked Users'" (nzSelect)="initLockedUserComponent()">
+    <app-locked-user></app-locked-user>
+  </nz-tab>
+
+</nz-tabset>

@@ -1,0 +1,24 @@
+<div class="header-menu" [class.header-menu-collapsed]="setting.layout.headerCollapsed">
+    <ul nz-menu [nzMode]="'horizontal'">
+        <li nz-menu-item>
+            <a routerLink="/home/index">
+                <span title>
+                    <i class="anticon anticon-home"></i>
+                    <span class="nav-text">{{'Home' | translate}}</span>
+                </span>
+            </a>
+        </li>
+        <li nz-submenu *ngFor="let data of menuData.children">
+            <span title>
+                <i [ngClass]="showIcon(data.icon)"></i>
+                <span class="nav-text">{{data.title | translate}}</span>
+            </span>
+    
+            <ul>
+                <li nz-menu-item *ngFor="let menuItem of data.children" [(nzSelected)]="menuItem.selected">
+                    <a class= 'header-menu-link' routerLink="{{menuItem.url}}">{{menuItem.title | translate}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

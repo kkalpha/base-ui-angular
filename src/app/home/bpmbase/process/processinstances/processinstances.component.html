@@ -1,0 +1,44 @@
+
+  <div style="padding:10px 10px; margin-bottom:10px;">
+
+      <nz-select [(ngModel)]="processCategory" [nzPlaceHolder]="'select a category'"
+          style="margin-right:10px;width:200px;">
+          <nz-option [nzLabel]="'All'" [nzValue]="''"></nz-option>
+          <nz-option [nzLabel]="'HR'" [nzValue]="'HR'"></nz-option>
+          <nz-option [nzLabel]="'EHS'" [nzValue]="'EHS'"></nz-option>
+        </nz-select>
+        <button nz-button [nzType]="'primary'" (click)="handleSearch()">Search</button>
+
+</div>
+
+<div class="search-result-list">
+
+    <nz-table #nzTable [nzData]="data" [nzPageSize]="10">
+        <thead nz-thead>
+          <tr>
+            <th nz-th><span>Instance ID</span></th>
+            <th nz-th><span>Process Key</span></th>
+            <th nz-th><span>Biz Key</span></th>
+            <th nz-th><span>Deployment ID</span></th>
+            <th nz-th><span>startUser</span></th>
+            <th nz-th><span>Start-Time</span></th>
+            <th nz-th><span>Instance diagram</span></th>
+          </tr>
+        </thead>
+        <tbody nz-tbody>
+          <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>{{data.instanceId}}</td>
+            <td nz-td>{{data.key}}</td>
+            <td nz-td>{{data.bizKEy}}</td>
+            <td nz-td>{{data.depID}}</td>
+            <td nz-td>{{data.startUser}}</td>
+            <td nz-td>{{data.starttime}}</td>
+           
+            <td>
+              <a target="_blank" href="{{data.diagramhref}}">diagram</a>
+              <!-- <a target="_blank" href="{{data.simplediagramhref}}">simpleDiagram</a> -->
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+</div>

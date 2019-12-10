@@ -1,0 +1,12 @@
+<div nz-row>
+    <div nz-col [nzLg]="24" [nzMd]="24" class="text-center" [nzXs]="24" style="font-size: 120%;margin-bottom: 1em;">
+        {{content}}
+    </div>
+</div>
+
+<div nz-row class="button-row button-fixed">
+    <div nz-col [nzLg]="24" [nzMd]="24" [nzXs]="24" class="text-center">
+        <button nz-button [nzType]="'primary'" (click)="confirm()" class="cell-margin-left">{{'Ok'
+            | translate}}</button>
+    </div>
+</div>

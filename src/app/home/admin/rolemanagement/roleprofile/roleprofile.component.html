@@ -1,0 +1,59 @@
+<form nz-form [formGroup]="form">
+    <div nz-row *ngIf="action_result.showmsg">
+        <div nz-col>
+            <nz-alert [nzType]="action_result.msgType" [nzMessage]="action_result.msg" nzShowIcon>
+            </nz-alert>
+        </div>
+    </div>
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>Role name</label></nz-form-label>
+
+        <nz-form-control nz-col [nzSm]="6" nzHasFeedback>
+            <input nz-input  formControlName="name" placeholder="role name and should be unique in the system">
+            <nz-form-explain *ngIf="getFormControl('name').errors?.required">Please input role name</nz-form-explain>
+        </nz-form-control>
+
+    </nz-form-item>
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>Role Category</label></nz-form-label>
+
+        <nz-form-control nz-col [nzSm]="6">
+            <nz-select formControlName="category"  [nzPlaceHolder]="'select a category'">
+                <nz-option [nzLabel]="'sys'" [nzValue]="'sys'"></nz-option>
+                <nz-option [nzLabel]="'it'" [nzValue]="'it'"></nz-option>
+                <nz-option [nzLabel]="'hr'" [nzValue]="'hr'"></nz-option>
+                <nz-option [nzLabel]="'ehs'" [nzValue]="'ehs'"></nz-option>
+            </nz-select>
+            <nz-form-explain *ngIf="getFormControl('category').errors?.required">Category is required</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-col [nzSm]="4"><label>Status</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="8">
+            <label nz-checkbox formControlName="isActive" nzSize="large">
+                <span>check to make the role active,otherwise inactive</span>
+            </label>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="mb-sm">
+        <nz-form-label nz-form-item-required nz-col [nzSm]="4"><label>Remarks</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="6" nzHasFeedback [nzValidateStatus]="getFormControl('remarks')">
+            <textarea nz-input formControlName="remarks" placeholder="remarks for the user" [nzAutosize]="{ minRows: 2, maxRows: 4 }"></textarea>
+            <nz-form-explain *ngIf="getFormControl('category').errors?.required">Please input remarks</nz-form-explain>
+            <nz-form-explain *ngIf="getFormControl('category').errors?.max">length should be not longer than 255</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row style=" margin-top:10px;">
+        <nz-form-control nz-col [nzSpan]="22" [nzOffset]="2">
+            <button style=" width:100px; margin-left:10px;" nz-button [nzType]="'primary'" (click)="_submitForm()" [nzLoading]="_saveOperating"
+                nzSize="large">Save</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

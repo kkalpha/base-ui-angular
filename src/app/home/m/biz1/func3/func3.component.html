@@ -1,0 +1,43 @@
+
+    <List className="my-list">
+      <ListItem Picker
+                [extra]="name1"
+                [arrow]="'horizontal'"
+                [mask]=true
+                [title]="'Areas'"
+                [value]="value1"
+                (onOk)="onOk1($event)"
+      >
+        Multiple & cascader
+      </ListItem>
+      <ListItem Picker
+                [extra]="name2"
+                [arrow]="'horizontal'"
+                [cascade]="false"
+                [data]="seasons"
+                [title]="'选择季节'"
+                [value]="value2"
+                (onOk)="onOk2($event)"
+      >
+        Multiple
+      </ListItem>
+      <ListItem Picker
+                [extra]="name3"
+                [arrow]="'horizontal'"
+                [data]="singleArea"
+                [value]="value3"
+                (onOk)="onOk3($event)"
+      >
+        Single
+      </ListItem>
+      <ListItem Picker
+                [extra]="name4"
+                [arrow]="'horizontal'"
+                [value]="value4"
+                (onPickerChange)="onPickerChange($event)"
+                (onOk)="onOk4($event)"
+      >
+        Multiple & async
+      </ListItem>
+    </List>
+  

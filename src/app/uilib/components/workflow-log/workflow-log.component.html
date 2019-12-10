@@ -1,0 +1,6 @@
+<nz-timeline>
+    <nz-timeline-item *ngFor="let item of workFlowInfo">
+        <!-- <span style="font-weight: bold">{{item.taskName}}:</span>{{returnText(item)}} -->
+        <span style="font-weight: bold">{{item.processStatus}}</span> {{returnText(item)}}
+    </nz-timeline-item>
+</nz-timeline>

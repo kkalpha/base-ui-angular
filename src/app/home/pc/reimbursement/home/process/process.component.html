@@ -1,0 +1,14 @@
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+
+<app-wf-form  [initData]="initData" [disabledFields]="disabledFields"></app-wf-form>
+
+<div nz-row class="button-row">
+  <div nz-col [nzXl]="6" [nzMd]="6" [nzXs]="6" [nzOffset]=18>
+    <button nz-button [nzType]="'primary'" (click)="approve()" [nzLoading]="isProcessing" >
+      {{'approve'| translate}}</button>
+    <button nz-button [nzType]="'primary'" (click)="reject()" [nzLoading]="isProcessing" class="cell-margin-left">
+      {{'reject' | translate}}</button>
+      <button nz-button [nzType]="'primary'" (click)="back()"  class="cell-margin-left">
+          {{'back'| translate}}</button>
+  </div>
+</div>

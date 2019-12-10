@@ -1,0 +1,69 @@
+<form nz-form [formGroup]="formGroup">
+  <nz-form-item>
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="empId" nzRequired>{{'empId' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <input nz-input formControlName="empId" id="empId">
+
+      <nz-form-explain *ngIf="formGroup.get('empId').dirty && formGroup.get('empId').errors">
+        <ng-container *ngIf="formGroup.get('empId').errors.required">
+          {{'ErrorEmpId' | translate}}
+        </ng-container>
+        <ng-container *ngIf="formGroup.get('empId').errors.maxlength">
+          error:exceed the max lenght!
+        </ng-container>
+
+      </nz-form-explain>
+    </nz-form-control>
+
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="transportation" nzRequired>{{'transportation' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <nz-select style="width: 100%;" formControlName="transportation" id="transportation" nzAllowClear nzPlaceHolder="Choose">
+        <nz-option *ngFor="let option of transportations" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="formGroup.get('transportation').dirty && formGroup.get('transportation').errors">{{'ErrorTransportation'
+        | translate}}</nz-form-explain>
+    </nz-form-control>
+
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="departureDate" nzRequired>{{'departureDate' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <nz-date-picker [nzAllowClear]="false" [nzFormat]="'yyyy-MM-dd'" formControlName="departureDate">
+      </nz-date-picker>
+      <nz-form-explain *ngIf="formGroup.get('departureDate').dirty && formGroup.get('departureDate').errors">{{'ErrorDepartureDate'
+        | translate}}</nz-form-explain>
+    </nz-form-control>
+
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="returnDate" nzRequired>{{'returnDate' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <nz-date-picker [nzAllowClear]="false" [nzFormat]="'yyyy-MM-dd'" formControlName="returnDate">
+      </nz-date-picker>
+      <nz-form-explain *ngIf="formGroup.get('returnDate').dirty && formGroup.get('returnDate').errors">{{'ErrorReturnDate'
+        | translate}}</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24" nzFor="tripReason" nzRequired>{{'tripReason' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="6" [nzMd]="6" [nzXs]="24">
+      <nz-select style="width: 100%;" formControlName="tripReason" id="tripReason" nzAllowClear nzPlaceHolder="Choose">
+        <nz-option *ngFor="let option of reasons" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="formGroup.get('tripReason').dirty && formGroup.get('tripReason').errors">{{'ErrorTripReason'
+        | translate}}</nz-form-explain>
+    </nz-form-control>
+
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzXl]="4" [nzMd]="6" [nzXs]="24">{{'remark' | translate}}</nz-form-label>
+    <nz-form-control [nzXl]="16" [nzMd]="18" [nzXs]="24">
+      <textarea nz-input formControlName="remark" nzAutosize></textarea>
+    </nz-form-control>
+    <nz-form-explain *ngIf="formGroup.get('remark').dirty && formGroup.get('remark').errors">{{'ErrorRemark'
+      | translate}}</nz-form-explain>
+  </nz-form-item>
+
+</form>

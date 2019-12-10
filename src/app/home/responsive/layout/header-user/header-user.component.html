@@ -1,0 +1,10 @@
+<nz-dropdown [nzPlacement]="'bottomRight'">
+    <div class="item d-flex align-items-center" [class.header-user-collapsed]="setting.layout.sideCollapsed" nz-dropdown>
+        <span class="header-username">{{userName}}</span>
+        <i nz-icon [type]="'user'" class="header-icon"></i>
+    </div>
+    <div nz-menu>
+        <div nz-menu-item (click)="logout()">
+            <i class="anticon anticon-logout"></i>{{'Logout' | translate}}</div>
+    </div>
+</nz-dropdown>

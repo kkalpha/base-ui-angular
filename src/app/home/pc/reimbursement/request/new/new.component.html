@@ -1,0 +1,12 @@
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+
+<app-wf-form></app-wf-form>
+
+<div nz-row class="button-row">
+  <div nz-col [nzXl]="4" [nzMd]="4" [nzXs]="4" [nzOffset]=20>
+    <button nz-button [nzType]="'primary'" (click)="create()" [nzLoading]="isProcessing" [disabled]="!dataForm.formGroup.valid">
+      {{'create'| translate}}</button>
+    <button nz-button [nzType]="'default'" (click)="reset()" class="cell-margin-left">
+      {{'reset' | translate}}</button>
+  </div>
+</div>

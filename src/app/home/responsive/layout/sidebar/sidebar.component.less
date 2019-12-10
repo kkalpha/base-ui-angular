@@ -1,0 +1,45 @@
+@import '../../../../../app.custom.less';
+:host {
+    ::ng-deep {
+        .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline .ant-menu-item a {
+            font-size: 12px;
+        }
+
+        .ant-menu-submenu-title .ant-menu-submenu-arrow {
+            right: 10px;
+        }
+
+        .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+            background-color: @primary-color !important;
+        }
+
+        .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected > a, .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected > a:hover {
+            color: #fff;
+        }
+
+        .ant-menu:not(.ant-menu-horizontal) .ant-menu-item:after {
+            border-right-color: shade(@primary-color, 30%);
+        }
+    }
+}
+
+.app-side-menu {
+    >li{
+        >div{
+            &:hover {
+                background-color: #6bb7ee;
+            }
+        }
+        li{
+            &:hover{
+                background-color: #6bb7ee;
+            }
+        }
+    }
+
+    .submenu-item {
+        height: 35px;
+        line-height: 35px;
+        margin-bottom: 0;
+    }
+}

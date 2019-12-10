@@ -1,0 +1,22 @@
+@import  '../../../../../app.custom.less';
+
+:host {
+    ::ng-deep {
+        .ant-select {
+            font-size: 13px;
+            margin-left: 10px;
+            width: 55px;
+            .ant-select-selection {
+                color: #fff;
+                background-color: @layout-header-background;
+                .ant-select-arrow {
+                    color: #fff;
+                }
+            }
+        }
+        .ant-select-dropdown-menu-item {
+            font-weight: initial;
+            font-size: 12px;
+        }
+    }
+}

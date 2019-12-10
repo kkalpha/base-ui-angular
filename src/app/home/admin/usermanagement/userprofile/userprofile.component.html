@@ -1,0 +1,96 @@
+<form nz-form [formGroup]="form">
+    <div nz-row *ngIf="action_result.showmsg">
+        <div nz-col>
+            <nz-alert [nzType]="action_result.msgType" [nzMessage]="action_result.msg" nzShowIcon>
+            </nz-alert>
+        </div>
+    </div>
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>Login ID</label></nz-form-label>
+        <nz-form-control *ngIf="stepItem.userData.loginId !=undefined" nz-col [nzSm]="6">
+            <input nz-input  formControlName="loginId" disabled readonly>
+        </nz-form-control>
+
+        <nz-form-control *ngIf="stepItem.userData.loginId ==undefined" nz-col [nzSm]="6" nzHasFeedback>
+            <input nz-input formControlName="loginId" placeholder="login id and unique in the system">
+            <nz-form-explain *ngIf="getFormControl('loginId').dirty && getFormControl('loginId').errors">Please input login id</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>User name</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="6" nzHasFeedback>
+            <input nz-input  formControlName="name" placeholder="display name for the user">
+            <nz-form-explain *ngIf="getFormControl('name').dirty && getFormControl('name').errors">Please input user name</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>Email</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="6" nzHasFeedback>
+            <input nz-input  formControlName="email" placeholder="email of the user">
+            <nz-form-explain *ngIf="getFormControl('email').errors?.required">Please input Email</nz-form-explain>
+            <nz-form-explain *ngIf="getFormControl('email').errors?.email">Use the correct Email formate</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row>
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>User type</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="6">
+            <nz-select formControlName="type" [nzPlaceHolder]="'select a type'">
+                <nz-option [nzLabel]="'local'" [nzValue]="'local'"></nz-option>
+                <nz-option [nzLabel]="'code1'" [nzValue]="'code1'"></nz-option>
+            </nz-select>
+            <nz-form-explain *ngIf="getFormControl('type').errors?.required">Type is required</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row *ngIf="getFormControl('type').value =='local'">
+        <nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+            <label nzRequired for="password" nz-form-item-required>Password</label>
+        </nz-form-label>
+        <nz-form-control nz-col [nzSm]="6" [nzXs]="24" nzHasFeedback>
+            <input nz-input  formControlName="password" type="password" (change)="updateConfirmValidator()">
+            <nz-form-explain *ngIf="getFormControl('password').errors?.required">Please input your password!</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row *ngIf="getFormControl('type').value =='local'">
+        <nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+            <label nzRequired for="checkPassword" nz-form-item-required>Confirm Password</label>
+        </nz-form-label>
+        <nz-form-control nz-col [nzSm]="6" [nzXs]="24" nzHasFeedback>
+            <input nz-input  formControlName="checkPassword" type="password">
+            <nz-form-explain *ngIf="getFormControl('checkPassword').errors?.required">Please confirm your password!</nz-form-explain>
+            <nz-form-explain *ngIf="getFormControl('checkPassword').errors?.confirm">Two passwords that you enter is inconsistent!</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item nz-row>
+        <nz-form-label nz-col [nzSm]="4"><label>Status</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="8">
+            <label nz-checkbox formControlName="isActive" nzSize="large">
+                <span>check to make the user active,otherwise inactive</span>
+            </label>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="mb-sm">
+        <nz-form-label nzRequired nz-form-item-required nz-col [nzSm]="4"><label>Remarks</label></nz-form-label>
+        <nz-form-control nz-col [nzSm]="6" nzHasFeedback [nzValidateStatus]="getFormControl('remarks')">
+            <textarea nz-input formControlName="remarks" placeholder="remarks for the user" [nzSize]="'large'" [nzAutosize]="{ minRows: 2, maxRows: 4 }"></textarea>
+            <nz-form-explain *ngIf="getFormControl('remarks').errors?.required">Please input remarks</nz-form-explain>
+            <nz-form-explain *ngIf="getFormControl('remarks').errors?.max">length should be not longer than 255</nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row style=" margin-top:10px;">
+        <nz-form-control nz-col [nzSpan]="22" [nzOffset]="2">
+            <button style="width:100px;" nz-button (click)="prev()" nzSize="large">Previous</button>
+            <button style=" width:100px; margin-left:10px;" nz-button [nzType]="'primary'" (click)="_submitForm()" nzSize="large">Save</button>
+            <button style=" width:100px; margin-left:10px;" nz-button (click)="next()" nzSize="large">Next</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

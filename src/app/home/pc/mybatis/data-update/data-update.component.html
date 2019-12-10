@@ -1,0 +1,16 @@
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+
+<mybatis-app-data-form [initData]="initData" [disabledFields]="disabledFields"></mybatis-app-data-form>
+
+<div nz-row class="button-row">
+    <div nz-col [nzXl]="6" [nzMd]="6" [nzXs]="6" [nzOffset]=18>
+        <button nz-button [nzType]="'primary'" (click)="update()" [nzLoading]="isProcessing" [disabled]="!dataForm.formGroup.valid">
+            {{'update' | translate}}</button>
+        <button nz-button [nzType]="'primary'" (click)="delete()" [nzLoading]="isProcessing" class="cell-margin-left">
+            {{'delete' | translate}}</button>
+        <button nz-button [nzType]="'default'" (click)="cancel()" class="cell-margin-left">{{'cancel'
+            | translate}}</button>
+    </div>
+</div>
+
+<!-- {{debugInfo |  json }} -->

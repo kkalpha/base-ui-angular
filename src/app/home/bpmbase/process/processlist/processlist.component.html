@@ -1,0 +1,43 @@
+
+  <div style="padding:10px 10px; margin-bottom:10px;">
+
+      <nz-select [(ngModel)]="processCategory" 
+      [nzPlaceHolder]="'select a category'" style="margin-right:10px;width:200px;">
+          <nz-option [nzLabel]="'All'" [nzValue]="'All'"></nz-option>
+          <nz-option [nzLabel]="'IT'" [nzValue]="'IT'"></nz-option>
+          <nz-option [nzLabel]="'HR'" [nzValue]="'HR'"></nz-option>
+          <nz-option [nzLabel]="'EHS'" [nzValue]="'EHS'"></nz-option>
+        </nz-select>
+        <button nz-button [nzType]="'primary'" (click)="handleSearch()">Search</button>
+
+</div>
+
+<div class="search-result-list">
+
+    <nz-table #nzTable [nzData]="data" [nzPageSize]="10">
+        <thead nz-thead>
+          <tr>
+            <th nz-th><span>Category</span></th>
+            <th nz-th><span>Key</span></th>
+            <th nz-th><span>Name</span></th>
+            <th nz-th><span>Version</span></th>
+            <th nz-th><span>Deployed time</span></th>
+            <th nz-th><span>Process diagram</span></th>
+          </tr>
+        </thead>
+        <tbody nz-tbody>
+          <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>{{data.category}}</td>
+            <td nz-td>{{data.key}}</td>
+            <td nz-td>{{data.name}}</td>
+            <td nz-td>{{data.version}}</td>
+            <td nz-td>{{data.deptime}}</td>
+            <td>
+              <a target="_blank" 
+              href="{{data.diagramhref}}">
+              {{data.diagramName}}</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+</div>

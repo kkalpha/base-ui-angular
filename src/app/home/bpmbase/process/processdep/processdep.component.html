@@ -1,0 +1,53 @@
+<div class="app-process-dep">
+
+  <div style="text-align:center;background-color:#ccc">
+    <nz-spin [nzSpinning]="isuploading" ></nz-spin>
+  </div>
+  <div nz-row *ngIf="result.showmsg">
+    <div nz-col>
+      <nz-alert [nzType]="result.msgType" [nzMessage]="result.msg" nzShowIcon>
+      </nz-alert>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+      <label for="category" nz-form-item-required>Process category</label>
+    </div>
+
+    <div nz-col [nzSm]="6" [nzXs]="24">
+      <nz-select style="width: 200px;" [(ngModel)]="processCategory">
+        <nz-option [nzLabel]="'IT'" [nzValue]="'IT'"></nz-option>
+        <nz-option [nzLabel]="'HR'" [nzValue]="'HR'"></nz-option>
+        <nz-option [nzLabel]="'Business'" [nzValue]="'Business'"></nz-option>
+      </nz-select>
+    </div>
+
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+      <label for="file" nz-form-item-required>Process definition file</label>
+    </div>
+
+    <div nz-col [nzSm]="6" [nzXs]="24">
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzRemove]="removeFile">
+        <button nz-button [nzType]="'primary'" style="width: 200px;">
+          <i class="anticon anticon-upload"></i>
+          <span>Select File</span>
+        </button>
+      </nz-upload>
+    </div>
+
+  </div>
+
+  <div nz-row style="margin-top:40px;">
+    <div nz-col [nzSm]="6" [nzXs]="24">
+      <button nz-button [nzType]="'primary'" style="padding:0px 40px;" (click)="handleUpload()">Submit</button>
+
+    </div>
+    <div nz-col [nzSm]="6" [nzXs]="24">
+      <button nz-button [nzType]="'default'" style="margin-left:10px;padding:0px 40px;" (click)="resetData()">Reset</button>
+    </div>
+  </div>
+
+</div>

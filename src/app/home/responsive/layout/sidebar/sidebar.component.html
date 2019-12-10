@@ -1,0 +1,26 @@
+<div>
+    <ul class="app-side-menu" nz-menu [nzInlineCollapsed]="setting.layout.sideCollapsed" [nzMode]="'inline'"
+    (nzClick)="onItemClick($event)">
+        <li nz-menu-item>
+            <a routerLink="{{device+'/index'}}">
+                <span title>
+                    <!-- <i class="anticon anticon-home"></i> -->
+                    <i nz-icon [type]="'home'"></i>
+                    <span class="nav-text">{{'MenuHome' | translate}}</span>
+                </span>
+            </a>
+        </li>
+        <li nz-submenu *ngFor="let data of menuData.children" [nzOpen]="data.expanded" (nzOpenChange)="closeOtherMenu(data)">
+            <span title>
+                <!-- <i [ngClass]="showIcon(data.icon)"></i> -->
+                <i nz-icon [type]="showIcon(data.icon)" ></i>
+                <span class="nav-text">{{data.title | translate}}</span>
+            </span>
+            <ul>
+                <li class="submenu-item" nz-menu-item *ngFor="let menuItem of data.children" [(nzSelected)]="menuItem.selected">
+                    <a routerLink="{{device+menuItem.url}}">{{menuItem.title | translate}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

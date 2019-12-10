@@ -1,0 +1,52 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+            <input nz-input  [(ngModel)]="roleName" placeholder="role name">
+        </div>
+
+        <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+            <button nz-button style=" margin-left:10px;" [nzType]="'primary'" (click)="doSearch()" [nzLoading]="_searchOperating">Search</button>
+            <button nz-button style=" margin-left:10px;" [nzType]="'primary'" (click)="doCreation()">New role</button>
+        </div>
+    </div>
+</div>
+
+<nz-table #nzTable [nzFrontPagination]="false"  [nzData]="tableInfo.data" [nzTotal]="tableInfo.total" 
+    [nzPageSize]="tableInfo.pageSize"[nzPageIndex]="tableInfo.pageIndex" [nzPageSizeOptions]="[8,10,20,50]" 
+    [nzLoading]="tableInfo.loading"  [nzShowSizeChanger]="tableInfo.showSizeChanger"
+    (nzPageIndexChange)="refreshTable($event,'index')" (nzPageSizeChange)="refreshTable($event,'size')">
+    <thead nz-thead>
+        <tr>
+            <th nz-th>
+                <span>Category</span>
+            </th>
+            <th nz-th>
+                <span>Role name</span>
+            </th>
+            <th nz-th>
+                <span>Status</span>
+            </th>
+            <th nz-th>
+                <span>Create time</span>
+            </th>
+            <th nz-th>
+                <span>Remarks</span>
+            </th>
+            <th nz-th>
+                <span>Management</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+            <td nz-td>{{data.category}}</td>
+            <td nz-td>{{data.name}}</td>
+            <td nz-td>{{data.status}}</td>
+            <td nz-td>{{data.createTime}}</td>
+            <td nz-td>{{data.remarks}}</td>
+            <td>
+                <a href="javascript:void(0);" (click)="doEdit(data)">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

@@ -1,0 +1,12 @@
+
+<nz-card nzTitle="Reimbursement Process Tasks">
+  
+    <!-- <nz-card nzType="inner" [nzTitle]="taskTitle" [nzExtra]="extraTemplate">
+      <a>Inner Card Content</a>
+    </nz-card>
+    <nz-card nzType="inner" style="margin-top:16px;" nzTitle="taskTitle" [nzExtra]="extraTemplate">
+      <a>Inner Card Content</a>
+    </nz-card> -->
+    <app-wf-task-card *ngFor="let task of tasks" [taskData] = "task"></app-wf-task-card>
+
+  </nz-card>

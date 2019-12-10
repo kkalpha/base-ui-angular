@@ -1,0 +1,32 @@
+<nz-table #nzTable [nzData]="tableInfo.data" [nzFrontPagination]="false" [nzTotal]="tableInfo.total" [nzPageSize]="tableInfo.pageSize" [nzPageIndex]="tableInfo.pageIndex"
+    (nzPageIndexChange)="refreshTable($event,'index')" (nzPageSizeChange)="refreshTable($event,'size')" [nzShowSizeChanger]="tableInfo.showSizeChanger"
+    [nzPageSizeOptions]="[5,10,20,50]" [nzLoading]="tableInfo.loading" *ngIf="tableInfo.total>0||tableInfo.isEmptyTableVisible">
+    <thead>
+        <tr>
+            <th *ngFor="let head of tableInfo.dataColumns">
+                <span>{{head.headLabel | translate}}</span>
+            </th>
+            <th *ngIf="isButtonsVisible()">
+                <span>{{tableInfo.buttonColumn.headLabel | translate}}</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of nzTable.data">
+            <td *ngFor="let head of tableInfo.dataColumns">
+                <!-- <span *ngIf="!head.clickEvent">{{formatContent(data, head) | translate}}</span>
+                <a *ngIf="head.clickEvent" (click)="head.clickEvent(data)">{{formatContent(data, head) | translate}}</a> -->
+                <span *ngIf="!head.clickEvent">{{formatContent(data, head)}}</span>
+                <a *ngIf="head.clickEvent" (click)="head.clickEvent(data)">{{formatContent(data, head)}}</a>
+            </td>
+            <td *ngIf="isButtonsVisible()">
+                <ng-container *ngFor="let button of tableInfo.buttonColumn.buttons">
+                    <!-- <button nz-button *ngIf="button.isVisible(data)" (click)="button.event(data)" class="cell-margin-left row-margin-top"
+                        nzSize="small" nzType="primary">{{button.label | translate}}</button> -->
+                    <a href="javascript:void(0);" *ngIf="button.isVisible(data)" (click)="button.event(data)" class="cell-margin-left row-margin-top">
+                            {{button.label | translate}}</a>
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

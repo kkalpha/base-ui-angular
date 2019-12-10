@@ -1,0 +1,44 @@
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+<div nz-row class="row-margin-bottom">
+    <div nz-col [nzSm]="16" [nzXs]="24" class="status-radio">
+        <nz-radio-group [(ngModel)]="statusChecked" (ngModelChange)="filterTable()" [nzButtonStyle]="'solid'">
+            <label nz-radio-button nzValue="Approved">{{'Approved' | translate}}</label>
+            <label nz-radio-button nzValue="Rejected">{{'Rejected' | translate}}</label>
+            <label nz-radio-button nzValue="All">{{'All' | translate}}</label>
+        </nz-radio-group>
+    </div>
+</div>
+<nz-table #nzTable [nzData]="tableData" [nzFrontPagination]="false" [nzTotal]="total" [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex" (nzPageIndexChange)="refreshTable($event,'index')" (nzPageSizeChange)="refreshTable($event,'size')"
+    [nzShowSizeChanger]="true" [nzPageSizeOptions]="[5,10,20,50]" [nzLoading]="loading" *ngIf="total>0">
+    <thead>
+        <tr>
+            <th><span>{{'Requestor' | translate}}</span></th>
+            <th><span>{{'From' | translate}}</span></th>
+            <th><span>{{'To' | translate}}</span></th>
+            <th><span>{{'Total Amount' | translate}}</span></th>
+            <th><span>{{'task Name' | translate}}</span></th>
+            <th><span>{{'Request Time' | translate}}</span></th>
+            <th><span>{{'Status' | translate}}</span></th>
+            <th><span>{{'Action' | translate}}</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of nzTable.data">
+            <td><span>{{data.bizData?data.bizData.requestor:''}}</span></td>
+            <td><span>{{data.bizData?data.bizData.fromDate:''}}</span></td>
+            <td><span>{{data.bizData?data.bizData.toDate:''}}</span></td>
+            <td><span>{{data.bizData?data.bizData.totalAmount:''}}</span></td>
+            <td><span>{{data.taskDefKey}}</span></td>
+            <td><span>{{data.bizData?data.bizData.createTime:''}}</span></td>
+            <td>
+                <a (click)="showWorkFlowInfo(data)">{{data.bizData?data.bizData.status:''}}</a>
+            </td>
+            <td>
+                <a href="javascript:void(0);" (click)="view(data)" class="cell-margin-left row-margin-top">
+                    {{'View' | translate}}
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

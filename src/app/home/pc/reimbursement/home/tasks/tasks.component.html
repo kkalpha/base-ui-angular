@@ -1,0 +1,53 @@
+<app-alert [alertParams]="handlerService.pageParams"></app-alert>
+<!-- <div >
+    <nz-radio-group [(ngModel)]="taskNameSelected" (ngModelChange)="filterTable()" [nzButtonStyle]="'solid'">
+        <label nz-radio-button *ngFor="let task of taskNameArray" [nzValue]="task" (click)="filterTable()">
+            <span>{{task}}</span>
+        </label>
+    </nz-radio-group>
+</div> -->
+
+<div nz-row class="button-row">
+
+    <div nz-col [nzSm]="24" [nzXs]="24" style="text-align: right">
+        <button nz-button [nzType]="'primary'" (click)="back()">
+            {{'back'| translate}}</button>
+    </div>
+</div>
+
+<!-- <app-list-table [tableInfo]="tableInfo" (pageChange)="refreshTable($event)"></app-list-table> -->
+
+<nz-table #nzTable [nzData]="tableData" [nzFrontPagination]="false" [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"
+    (nzPageIndexChange)="refreshTable($event,'index')" (nzPageSizeChange)="refreshTable($event,'size')" [nzShowSizeChanger]="true"
+    [nzPageSizeOptions]="[5,10,20,50]" [nzLoading]="loading" *ngIf="total>0">
+    <thead>
+        <tr>
+            <th><span>{{'Requestor' | translate}}</span></th>
+            <th><span>{{'From' | translate}}</span></th>
+            <th><span>{{'To' | translate}}</span></th>
+            <th><span>{{'totalAmount' | translate}}</span></th>
+            <th><span>{{'taskDefKey' | translate}}</span></th>
+            <th><span>{{'RequestTime' | translate}}</span></th>
+            <th><span>{{'Status' | translate}}</span></th>
+            <th><span>{{'Action' | translate}}</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of nzTable.data">
+            <td><span>{{data.requestor}}</span></td>
+            <td><span>{{data.fromDate}}</span></td>
+            <td><span>{{data.toDate}}</span></td>
+            <td><span>{{data.totalAmount}}</span></td>
+            <td><span>{{data.taskDefKey}}</span></td>
+            <td><span>{{data.createTime}}</span></td>
+            <td>
+                <a (click)="showWorkFlowInfo(data)">{{data.status}}</a>
+            </td>
+            <td>
+                <a href="javascript:void(0);" (click)="process(data)" class="cell-margin-left row-margin-top">
+                    {{'Process' | translate}}
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

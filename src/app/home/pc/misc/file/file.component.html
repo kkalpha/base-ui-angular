@@ -1,0 +1,10 @@
+<nz-tabset>
+
+  <nz-tab [nzTitle]="'Upload'" (nzSelect)="initTasks()">
+    <app-file-upload></app-file-upload>
+  </nz-tab>
+
+  <nz-tab [nzTitle]="'Download'" (nzSelect)="initHistory()">
+      <app-file-download></app-file-download>
+  </nz-tab>
+</nz-tabset>

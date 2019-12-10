@@ -1,0 +1,13 @@
+<nz-tabset [(nzSelectedIndex)]="currentTab">
+    <nz-tab [nzTitle]="'Role List'">
+        <app-rolelist (roleListEvent)="onRoleListEvent($event)"></app-rolelist>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="'Role creation/change'">
+        <app-roleprofile (roleProfileEvent)="onRoleProfileEvent($event)"></app-roleprofile>
+    </nz-tab>
+
+    <nz-tab [nzTitle]="'Role permission'" (nzSelect)="initRolePermission($event)">
+        <app-rolepermission></app-rolepermission>
+    </nz-tab>
+</nz-tabset>

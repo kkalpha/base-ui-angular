@@ -1,0 +1,26 @@
+<div class="app-wrapper" [class.side-collapsed]="setting.layout.sideCollapsed">
+    <div class="app-side-bg"></div>
+    <nz-layout style="height:100%;" class="layout">
+        <app-header style="z-index:999;" [ngClass]="isFull?'move-up-out':'move-up-in'"></app-header>
+        <div class="full-button">
+            <button nz-button [nzType]="'primary'" (click)="showFullView()" title="Full View">
+                <i class="anticon anticon-arrows-alt" *ngIf="!isFull"></i>
+                <i class="anticon anticon-shrink" *ngIf="isFull"></i>
+            </button>
+        </div>
+        <header-menu></header-menu>
+        
+        <nz-layout style="height:calc(100% - 64px);">
+            <nz-sider class="app-side" nzCollapsible [(nzCollapsed)]="setting.layout.sideCollapsed" [nzTrigger]="null" [ngClass]="isFull?'move-left-out':'move-left-in'">
+                <app-sidebar [device]="'/pc'" (menuDataReadyEvent)="onMenuDataReadyEvent($event)"></app-sidebar>
+            </nz-sider>
+            <nz-layout>
+                <nz-content class="app-content">
+                    <div class="app-content-card">
+                        <router-outlet></router-outlet>
+                    </div>
+                </nz-content>
+            </nz-layout>
+        </nz-layout>
+    </nz-layout>
+</div>

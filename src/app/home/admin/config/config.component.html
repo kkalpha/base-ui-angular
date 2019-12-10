@@ -1,0 +1,51 @@
+<div class="app-process-dep">
+    <form nz-form [nzLayout]="'horizontal'" [formGroup]="formGroup">
+        <div style="text-align:center;background-color:#ccc">
+            <nz-spin [nzSpinning]="isInAction"></nz-spin>
+        </div>
+
+        <div nz-row *ngIf="result.showmsg">
+            <div nz-col>
+                <nz-alert [nzType]="result.msgType" [nzMessage]="result.msg" nzShowIcon>
+                </nz-alert>
+            </div>
+        </div>
+
+        <div nz-row style="margin-top:40px;">
+            <div nz-col [nzSm]="6" [nzXs]="24" style="padding-right:10px;">
+                <nz-select formControlName="configoption"  [nzPlaceHolder]="'Select a option'">
+                    <nz-option [nzLabel]="'refresh menus config'" [nzValue]="'menuconfig'"></nz-option>
+                    <nz-option [nzLabel]="'refresh email templates'" [nzValue]="'emailconfig'"></nz-option>
+                    <nz-option [nzLabel]="'refresh config table'" [nzValue]="'tableconfig'"></nz-option>
+                </nz-select>
+            </div>
+            <div nz-col [nzSm]="6" [nzXs]="24">
+                <button nz-button [nzType]="'primary'"  (click)="doRefresh()">Refresh</button>
+            </div>
+        </div>
+
+        <div nz-row style="margin-top:40px;">
+            <div nz-col [nzSm]="6" [nzXs]="24">
+                <span>System environment information</span>
+            </div>
+            <div nz-col [nzSm]="6" [nzXs]="24">
+                <button nz-button [nzType]="'primary'"  (click)="getSysEnv()">Test System Env</button>
+            </div>
+        </div>
+
+        <div nz-row style="margin-top:40px;">
+            <div nz-col [nzSm]="6" [nzXs]="24">
+                <span>Test gateway timeout</span>
+            </div>
+            <div nz-col [nzSm]="6" [nzXs]="24">
+                <button nz-button [nzType]="'primary'"  (click)="testTimeout()">Test timeout</button>
+            </div>
+        </div>
+
+        <div nz-row style="margin-top:40px;">
+            <div nz-col [nzSm]="6" [nzXs]="24">
+                <span>ui version 0.0.0 -- ui 版本 0.0.0</span>
+            </div>
+        </div>
+    </form>
+</div>

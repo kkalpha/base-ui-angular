@@ -1,0 +1,18 @@
+<nz-card nzType="inner" [nzTitle]="taskTitle" [nzExtra]="extraTemplate">
+    <a>Description for this task...</a>
+</nz-card>
+
+<ng-template #extraTemplate>
+  <a *ngIf="taskData.count>0" (click)="processList(taskData.definitionkey)">Process</a>
+</ng-template>
+
+<ng-template #taskTitle>
+    <span style="margin-right:5px">{{taskData.name}}</span>
+
+    <nz-badge *ngIf="taskData.count==0" [nzCount]="taskData.count" 
+    [nzShowZero]="true" [nzStyle]="{ backgroundColor: '#52c41a' }"></nz-badge>
+
+    <nz-badge *ngIf="taskData.count>0" [nzCount]="taskData.count"></nz-badge>
+</ng-template>
+
+<!-- [nzStyle]="{ backgroundColor: '#52c41a' }"" -->

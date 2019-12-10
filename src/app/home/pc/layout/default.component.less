@@ -1,0 +1,159 @@
+@import '../../../../app.custom.less';
+:host {
+    ::ng-deep {
+        .ant-layout-header {
+            padding: 0;
+            line-height: 0;
+        }
+        .ant-layout-sider {
+            background-color: #fff;
+        }
+    }
+}
+
+.app-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+
+    .app-side-bg{
+        width: @layout-sider-width;
+        height: 100%;
+        background: @layout-sider-background-light;
+        z-index: -999;
+        position: absolute;
+        border-right: 1px solid #e9e9e9;
+    }
+
+    .full-button {
+        position: fixed;
+        z-index: 999;
+        right: 2px;
+        top: 2px;
+
+        button {
+            padding: 0 8px;
+        }
+    }
+
+    .app-side {
+        overflow-x: hidden;
+    }
+
+    .app-content {
+        margin: @padding-xs;
+        background-color: #fff;
+        .app-content-card {
+            width: 100%;
+            padding: 10px;
+            display: block;
+            background-color: #fff;
+        }
+    }
+}
+
+// full screen animation
+.move-up-out {
+    animation: moveUpOut .3s ease-in;
+    animation-fill-mode: both;
+}
+.move-up-in {
+    animation: moveUpIn .3s ease-in;
+    animation-fill-mode: both;
+}
+.move-left-out {
+    animation: moveLeftOut .3s ease-in;
+    animation-fill-mode: both;
+}
+.move-left-in {
+    animation: moveLeftIn .3s ease-in;
+    animation-fill-mode: both;
+}
+
+.side-collapsed {
+    .app-side {
+        overflow-x: unset;
+    }
+    .move-left-out{
+        animation: moveCollapsedLeftOut .3s ease-in;
+        animation-fill-mode: both;
+    }
+    .move-left-in{
+        animation: moveCollapsedLeftIn .3s ease-in;
+        animation-fill-mode: both;
+    }
+}
+
+@keyframes moveUpIn {
+    0% {
+        margin-top: -(@layout-header-height);
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+@keyframes moveUpOut {
+    0% {
+        margin-top: 0;
+    }
+    100% {
+        margin-top: -(@layout-header-height);
+    }
+}
+
+@keyframes moveLeftIn {
+    0% {
+        margin-left: -(@layout-sider-width);
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+  
+@keyframes moveLeftOut {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -(@layout-sider-width);
+    }
+}
+@keyframes moveCollapsedLeftIn {
+    0% {
+        margin-left: -(@layout-header-height);
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+  
+@keyframes moveCollapsedLeftOut {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -(@layout-header-height);
+    }
+}
+@media (min-width: @screen-sm-max) {
+    .app-content {
+        margin-left: (@padding-xs*1.5);
+    }
+}
+
+@media (max-width: @screen-lg) {
+    .app-side{
+        display: none;
+    }
+    .side-collapsed {
+        .app-side, .app-side-bg {
+            display: none;
+        }
+    }
+    .full-button {
+        display: none;
+    }
+}
